@@ -1,4 +1,4 @@
-import { noop, toBlobURL, toUint8Array } from './utils';
+import { noop, toUint8Array } from './utils';
 import * as types from './types';
 import * as utils from './utils';
 
@@ -51,9 +51,9 @@ export class FFmpegBase {
 
   private async createScriptURIs() {
     return {
-      core: await toBlobURL(this._source),
-      wasm: await toBlobURL(this._source.replace('.js', '.wasm')),
-      worker: await toBlobURL(this._source.replace('.js', '.worker.js')),
+      core: this._source,
+      wasm: this._source.replace('.js', '.wasm'),
+      worker: this._source.replace('.js', '.worker.js'),
     };
   }
 
